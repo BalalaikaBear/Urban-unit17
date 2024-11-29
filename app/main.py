@@ -1,11 +1,14 @@
 from fastapi import FastAPI
-from routers import task, user
+from app.routers import task, user
 
 app = FastAPI()
 
-#$ fastapi dev app/main.py - запуск файла
+# ЗАПУСК ФАЙЛА
+# вариант 1: $ fastapi dev app/main.py
+# вариант 2: $ uvicorn app.main:app --reload
+# unicorn <путь к файлу>:<ссылка на объект FastAPI> --reload - опция автоматического перезапуска сервера при изменении кода
 
-# подготовка миграции
+# ПОДГОТОВКА МИГРАЦИИ
 # 1. $ alembic init app/migrations  - создание папки миграции
 # 2. в файле alembic.ini прописать: sqlalchemy.url = sqlite:///taskmanager.db
 # 3. в файле env.py прописать:  from app.backend.db import Base
